@@ -29,8 +29,8 @@ BaselineOfPharoEDAPorts >> declareGroupsIn: spec [
 { #category : #meta }
 BaselineOfPharoEDAPorts >> declarePackagesIn: spec [
 	spec
-		package: #'EDAA-Domain';
-		package: #'EDAA-Domain-Tests'
+		package: #'EDAP-Domain';
+		package: #'EDAP-Domain-Tests'
 			with: [ spec requires: #('EDAP-Domain') ]
  
 ]
