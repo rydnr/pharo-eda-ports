@@ -11,6 +11,7 @@ BaselineOfPharoEDAPorts >> baseline: spec [
 		for: #common
 		do: [ spec blessing: #baseline.
 			self includePharoEDACommon: spec.
+			self includePharoEDAApi: spec.
 			self declarePackagesIn: spec.
 			self declareGroupsIn: spec ]
 ]
