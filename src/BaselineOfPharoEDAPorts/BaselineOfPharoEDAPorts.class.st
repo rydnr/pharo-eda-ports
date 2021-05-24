@@ -30,9 +30,18 @@ BaselineOfPharoEDAPorts >> declareGroupsIn: spec [
 { #category : #meta }
 BaselineOfPharoEDAPorts >> declarePackagesIn: spec [
 	spec
-		package: #'EDAP-Domain' with: [ spec requires: #('PharoEDACommon') ];
+		package: #'EDAP-Domain'
+			with: [ spec requires: #('PharoEDACommon' 'PharoEDAApi') ];
 		package: #'EDAP-Domain-Tests'
 			with: [ spec requires: #('EDAP-Domain') ]
+]
+
+{ #category : #dependencies }
+BaselineOfPharoEDAPorts >> includePharoEDAApi: spec [
+	spec
+		baseline: 'PharoEDAApi'
+		with: [ spec repository: 'github://osoco/pharo-eda-api:main' ].
+	^ spec
 ]
 
 { #category : #dependencies }
