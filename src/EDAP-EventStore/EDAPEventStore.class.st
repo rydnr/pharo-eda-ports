@@ -1,5 +1,5 @@
 Class {
-	#name : #EDAEventStore,
+	#name : #EDAPEventStore,
 	#superclass : #Object,
 	#traits : 'EDACTPrintOnHelper',
 	#classTraits : 'EDACTPrintOnHelper classTrait',
@@ -10,36 +10,36 @@ Class {
 }
 
 { #category : #persistence }
-EDAEventStore >> doInitialize [
+EDAPEventStore >> doInitialize [
 	self repository: self initBackendRepository
 ]
 
 { #category : #persistence }
-EDAEventStore >> findEventsOfTenant: aTenant ofAggregate: anAggregateRootClass [
+EDAPEventStore >> findEventsOfTenant: aTenant ofAggregate: anAggregateRootClass [
 	^ self
 		findEventsOfTenant: aTenant ofAggregate: anAggregateRootClass
 		whereCriteria: Dictionary new
 ]
 
 { #category : #persistence }
-EDAEventStore >> findEventsOfTenant: aTenant ofAggregate: anAggregateRootClass whereCriteria: aCriteriaDictionary [
+EDAPEventStore >> findEventsOfTenant: aTenant ofAggregate: anAggregateRootClass whereCriteria: aCriteriaDictionary [
 	self subclassResponsibility
 ]
 
 { #category : #persistence }
-EDAEventStore >> findEventsOfTenant: aTenant ofAggregate: anAggregateRootClass whereId: aNumber [
+EDAPEventStore >> findEventsOfTenant: aTenant ofAggregate: anAggregateRootClass whereId: aNumber [
 	self subclassResponsibility
 ]
 
 { #category : #persistence }
-EDAEventStore >> findEventsOfTenant: aTenant ofType: anEventClass [
+EDAPEventStore >> findEventsOfTenant: aTenant ofType: anEventClass [
 	^ self
 		findEventsOfTenant: aTenant ofAggregate: anEventClass aggregateRootClass
 		whereCriteria: {('#instanceOf' -> anEventClass greaseString)} asDictionary
 ]
 
 { #category : #persistence }
-EDAEventStore >> findEventsOfTenant: aTenant ofType: anEventClass whereCriteria: aCriteria [
+EDAPEventStore >> findEventsOfTenant: aTenant ofType: anEventClass whereCriteria: aCriteria [
 	| criteria |
 	criteria := Dictionary newFrom: aCriteria.
 	criteria at: '#instanceOf' put: anEventClass greaseString.
@@ -50,34 +50,34 @@ EDAEventStore >> findEventsOfTenant: aTenant ofType: anEventClass whereCriteria:
 ]
 
 { #category : #persistence }
-EDAEventStore >> flush [
+EDAPEventStore >> flush [
 	self repository flush
 
 	
 ]
 
 { #category : #persistence }
-EDAEventStore >> initBackendRepository [
+EDAPEventStore >> initBackendRepository [
 	self subclassResponsibility
 ]
 
 { #category : #initialization }
-EDAEventStore >> initialize [
+EDAPEventStore >> initialize [
 	super initialize.
 	self doInitialize
 ]
 
 { #category : #initialization }
-EDAEventStore >> repository [
+EDAPEventStore >> repository [
 	^ repository
 ]
 
 { #category : #accessing }
-EDAEventStore >> repository: aRepository [
+EDAPEventStore >> repository: aRepository [
 	repository := aRepository
 ]
 
 { #category : #persistence }
-EDAEventStore >> saveEvents: anEventCollection [
+EDAPEventStore >> saveEvents: anEventCollection [
 	self subclassResponsibility
 ]
