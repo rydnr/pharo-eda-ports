@@ -34,7 +34,9 @@ BaselineOfPharoEDAPorts >> declarePackagesIn: spec [
 		package: #'EDAP-Domain'
 			with: [ spec requires: #('PharoEDACommon' 'PharoEDAApi') ];
 		package: #'EDAP-Domain-Tests'
-			with: [ spec requires: #('EDAP-Domain') ]
+			with: [ spec requires: #('EDAP-Domain') ];
+		package: #'EDAP-EventStore'
+			with: [ spec requires: #('PharoEDACommon' 'PharoEDAApi') ]
 ]
 
 { #category : #dependencies }
