@@ -21,7 +21,7 @@ BaselineOfPharoEDAPorts >> declareGroupsIn: spec [
 	spec
 		group: 'core'
 			with:
-			#(#'EDAP-Domain');
+			#(#'EDAP-Domain' 'EDAP-EventStore');
 		group: 'tests'
 			with:
 			#(#'EDAP-Domain-Tests');
