@@ -1,8 +1,8 @@
 Class {
 	#name : #EDAPEventStore,
 	#superclass : #Object,
-	#traits : 'EDACTPrintOnHelper',
-	#classTraits : 'EDACTPrintOnHelper classTrait',
+	#traits : 'EDACPrintOnHelper',
+	#classTraits : 'EDACPrintOnHelper classTrait',
 	#instVars : [
 		'repository'
 	],
