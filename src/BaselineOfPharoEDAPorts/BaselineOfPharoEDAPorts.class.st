@@ -12,6 +12,7 @@ BaselineOfPharoEDAPorts >> baseline: spec [
 		do: [ spec blessing: #baseline.
 			self includePharoEDACommon: spec.
 			self includePharoEDAApi: spec.
+			self includePharoEDAErrors: spec.
 			self declarePackagesIn: spec.
 			self declareGroupsIn: spec ]
 ]
@@ -46,6 +47,14 @@ BaselineOfPharoEDAPorts >> includePharoEDAApi: spec [
 	spec
 		baseline: 'PharoEDAApi'
 		with: [ spec repository: 'github://osoco/pharo-eda-api:main' ].
+	^ spec
+]
+
+{ #category : #dependencies }
+BaselineOfPharoEDAPorts >> includePharoEDAErrors: spec [
+	spec
+		baseline: 'PharoEDAErrors'
+		with: [ spec repository: 'github://osoco/pharo-eda-errors:main' ].
 	^ spec
 ]
 
