@@ -39,7 +39,7 @@ BaselineOfPharoEDAPorts >> declarePackagesIn: spec [
 		package: #'EDAP-EventStore'
 			with: [ spec requires: #('PharoEDACommon' 'PharoEDAApi') ];
 		package: #'EDAP-Messaging'
-			with: [ spec requires: #('PharoEDACommon' 'PharoEDAApi') ]
+			with: [ spec requires: #('PharoEDACommon' 'PharoEDAApi' 'PharoEDAErrors') ]
 ]
 
 { #category : #dependencies }
