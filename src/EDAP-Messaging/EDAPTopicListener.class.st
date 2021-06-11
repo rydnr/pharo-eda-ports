@@ -3,7 +3,7 @@ Class {
 	#superclass : #Object,
 	#traits : 'EDACLogging',
 	#classTraits : 'EDACLogging classTrait',
-	#category : #'EDA-Messaging-Topic'
+	#category : #'EDAP-Messaging'
 }
 
 { #category : #logging }
