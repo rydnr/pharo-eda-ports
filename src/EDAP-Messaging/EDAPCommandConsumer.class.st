@@ -11,7 +11,7 @@ Class {
 	#classInstVars : [
 		'restartOnCommandConsumingErrors'
 	],
-	#category : #'EDAP-Messaging'
+	#category : #'EDAP-Messaging-Command'
 }
 
 { #category : #'instance creation' }

@@ -3,7 +3,7 @@ Class {
 	#superclass : #Object,
 	#traits : 'EDACPrintOnHelper',
 	#classTraits : 'EDACPrintOnHelper classTrait',
-	#category : #'EDAP-Messaging'
+	#category : #'EDAP-Messaging-Topic'
 }
 
 { #category : #lifecycle }
