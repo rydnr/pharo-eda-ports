@@ -1,22 +1,22 @@
 # PharoEDA Ports
 
-This project inspects the published [PharoEDA-Adapters](https://github.com/osoco/pharo-eda-adapters "PharoEDA-Adapters") and makes them available to create new `EDAApplication` instances.
+This project inspects the published [PharoEDA-Adapters](https://github.com/rydnr/pharo-eda-adapters "PharoEDA-Adapters") and makes them available to create new `EDAApplication` instances.
 
 ## Motivation
 
 PharoEDA applications use ports and adapters, so they are decoupled from the actual technologies used.
-This project listens to [adapter-related events](https://github.com/osoco/pharo-eda-adapters "adapter-related events"), projects them, and make them accessible when creating `EDAApplication`s.
+This project listens to [adapter-related events](https://github.com/rydnr/pharo-eda-adapters "adapter-related events"), projects them, and make them accessible when creating `EDAApplication`s.
 
 ## Design
 
-PharoEDA-Ports listen to `Announcement`s from [PharoEDA-Adapters](https://github.com/osoco/pharo-eda-adapters "PharoEDA-Adapters"), and maintain a read model with the available adapters.
+PharoEDA-Ports listen to `Announcement`s from [PharoEDA-Adapters](https://github.com/rydnr/pharo-eda-adapters "PharoEDA-Adapters"), and maintain a read model with the available adapters.
 
 ## Usage
 
 First, load it with Metacello:
 
 ```smalltalk
-Metacello new repository: 'github://osoco/pharo-eda-ports:main'; baseline: #PharoEDAPorts; load
+Metacello new repository: 'github://rydnr/pharo-eda-ports:main'; baseline: #PharoEDAPorts; load
 ```
 
 Then, run it with
