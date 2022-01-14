@@ -46,7 +46,7 @@ BaselineOfPharoEDAPorts >> declarePackagesIn: spec [
 BaselineOfPharoEDAPorts >> includePharoEDAApi: spec [
 	spec
 		baseline: 'PharoEDAApi'
-		with: [ spec repository: 'github://osoco/pharo-eda-api:main' ].
+		with: [ spec repository: 'github://rydnr/pharo-eda-api:main' ].
 	^ spec
 ]
 
@@ -54,7 +54,7 @@ BaselineOfPharoEDAPorts >> includePharoEDAApi: spec [
 BaselineOfPharoEDAPorts >> includePharoEDAErrors: spec [
 	spec
 		baseline: 'PharoEDAErrors'
-		with: [ spec repository: 'github://osoco/pharo-eda-errors:main' ].
+		with: [ spec repository: 'github://rydnr/pharo-eda-errors:main' ].
 	^ spec
 ]
 
@@ -62,6 +62,6 @@ BaselineOfPharoEDAPorts >> includePharoEDAErrors: spec [
 BaselineOfPharoEDAPorts >> includePharoEDACommon: spec [
 	spec
 		baseline: 'PharoEDACommon'
-		with: [ spec repository: 'github://osoco/pharo-eda-common:main' ].
+		with: [ spec repository: 'github://rydnr/pharo-eda-common:main' ].
 	^ spec
 ]
