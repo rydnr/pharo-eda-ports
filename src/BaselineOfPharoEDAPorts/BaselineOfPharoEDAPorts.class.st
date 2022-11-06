@@ -1,3 +1,16 @@
+"
+**Class**
+
+I'm a baseline to load PharoEDA Ports.
+
+**Responsibilities**
+
+Guide Metacello to load PharoEDA-Ports with its dependencies.
+
+**Collaborators**
+
+Metacello
+"
 Class {
 	#name : #BaselineOfPharoEDAPorts,
 	#superclass : #BaselineOf,
@@ -51,6 +64,14 @@ BaselineOfPharoEDAPorts >> includePharoEDAApi: spec [
 ]
 
 { #category : #dependencies }
+BaselineOfPharoEDAPorts >> includePharoEDACommon: spec [
+	spec
+		baseline: 'PharoEDACommon'
+		with: [ spec repository: 'github://rydnr/pharo-eda-common:main' ].
+	^ spec
+]
+
+{ #category : #dependencies }
 BaselineOfPharoEDAPorts >> includePharoEDAErrors: spec [
 	spec
 		baseline: 'PharoEDAErrors'
@@ -58,10 +79,13 @@ BaselineOfPharoEDAPorts >> includePharoEDAErrors: spec [
 	^ spec
 ]
 
-{ #category : #dependencies }
-BaselineOfPharoEDAPorts >> includePharoEDACommon: spec [
-	spec
-		baseline: 'PharoEDACommon'
-		with: [ spec repository: 'github://rydnr/pharo-eda-common:main' ].
-	^ spec
+{ #category : #hooks }
+BaselineOfPharoEDAPorts >> postload: loader package: packageSpec [
+
+	| location |
+	location := (IceRepository registry detect: [ :each | 
+		             each name = 'pharo-eda-ports' ]) location.
+	EDAIconProvider addDefaultLocation: location / 'resources' / 'icons'.
+	EDACTranslationProvider addDefaultLocation:
+		location / 'resources' / 'l10n'
 ]
