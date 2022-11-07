@@ -19,15 +19,16 @@ Class {
 
 { #category : #baselines }
 BaselineOfPharoEDAPorts >> baseline: spec [
+
 	<baseline>
-	spec
-		for: #common
-		do: [ spec blessing: #baseline.
-			self includePharoEDACommon: spec.
-			self includePharoEDAApi: spec.
-			self includePharoEDAErrors: spec.
-			self declarePackagesIn: spec.
-			self declareGroupsIn: spec ]
+	spec for: #common do: [ 
+		spec blessing: #baseline.
+		spec postLoadDoIt: #'postload:package:'.
+		self includePharoEDACommon: spec.
+		self includePharoEDAApi: spec.
+		self includePharoEDAErrors: spec.
+		self declarePackagesIn: spec.
+		self declareGroupsIn: spec ]
 ]
 
 { #category : #meta }
