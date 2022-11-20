@@ -33,27 +33,22 @@ BaselineOfPharoEDAPorts >> baseline: spec [
 
 { #category : #meta }
 BaselineOfPharoEDAPorts >> declareGroupsIn: spec [
+
 	spec
-		group: 'core'
-			with:
-			#(#'EDAP-Domain' 'EDAP-EventStore' 'EDAP-Messaging');
-		group: 'tests'
-			with:
-			#(#'EDAP-Domain-Tests');
-		group: 'default' with: #('core' 'tests')
+		group: 'core' with: #( 'EDAP-EventStore' 'EDAP-Messaging' );
+		group: 'default'
+		with: #( 'core' )
 ]
 
 { #category : #meta }
 BaselineOfPharoEDAPorts >> declarePackagesIn: spec [
+
 	spec
-		package: #'EDAP-Domain'
-			with: [ spec requires: #('PharoEDACommon' 'PharoEDAApi') ];
-		package: #'EDAP-Domain-Tests'
-			with: [ spec requires: #('EDAP-Domain') ];
 		package: #'EDAP-EventStore'
-			with: [ spec requires: #('PharoEDACommon' 'PharoEDAApi') ];
+		with: [ spec requires: #( 'PharoEDACommon' 'PharoEDAApi' ) ];
 		package: #'EDAP-Messaging'
-			with: [ spec requires: #('PharoEDACommon' 'PharoEDAApi' 'PharoEDAErrors') ]
+		with: [ 
+			spec requires: #( 'PharoEDACommon' 'PharoEDAApi' 'PharoEDAErrors' ) ]
 ]
 
 { #category : #dependencies }
