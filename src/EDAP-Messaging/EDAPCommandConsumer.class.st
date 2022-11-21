@@ -1,8 +1,8 @@
 Class {
 	#name : #EDAPCommandConsumer,
 	#superclass : #Object,
-	#traits : 'EDACPrintOnHelper + EDACErrorHelper',
-	#classTraits : 'EDACPrintOnHelper classTrait + EDACErrorHelper classTrait',
+	#traits : 'EDACPrintOnHelper + EDACErrorHelper + EDACLogging',
+	#classTraits : 'EDACPrintOnHelper classTrait + EDACErrorHelper classTrait + EDACLogging classTrait',
 	#instVars : [
 		'busListener',
 		'commandMaterializer',
@@ -21,56 +21,6 @@ EDAPCommandConsumer class >> busListener: busListener commandMaterializer: comma
 		commandMaterializer: commandMaterializer;
 		commandDispatcher: commandDispatcher;
 		yourself
-]
-
-{ #category : #logging }
-EDAPCommandConsumer class >> logDebugMessage: aMessage beautify: aBoolean [
-	EDACLoggingSettings debugEnabled
-		ifTrue: [ self
-				logMessage: aMessage
-				inCategory: 'DEBUG'
-				inStream: self defaultStream
-				beautify: aBoolean ]
-]
-
-{ #category : #logging }
-EDAPCommandConsumer class >> logErrorMessage: aMessage beautify: aBoolean [
-	EDACLoggingSettings errorEnabled
-		ifTrue: [ self
-				logMessage: aMessage
-				inCategory: 'ERROR'
-				inStream: self defaultStream
-				beautify: aBoolean ]
-]
-
-{ #category : #logging }
-EDAPCommandConsumer class >> logInfoMessage: aMessage beautify: aBoolean [
-	EDACLoggingSettings infoEnabled
-		ifTrue: [ self
-				logMessage: aMessage
-				inCategory: 'INFO '
-				inStream: self defaultStream
-				beautify: aBoolean ]
-]
-
-{ #category : #logging }
-EDAPCommandConsumer class >> logTraceMessage: aMessage beautify: aBoolean [
-	EDACLoggingSettings traceEnabled
-		ifTrue: [ self
-				logMessage: aMessage
-				inCategory: 'TRACE'
-				inStream: self defaultStream
-				beautify: aBoolean ]
-]
-
-{ #category : #logging }
-EDAPCommandConsumer class >> logWarningMessage: aMessage beautify: aBoolean [
-	^ EDACLoggingSettings warningEnabled
-		ifTrue: [ self
-				logMessage: aMessage
-				inCategory: 'WARN '
-				inStream: self defaultStream
-				beautify: aBoolean ]
 ]
 
 { #category : #accessing }
