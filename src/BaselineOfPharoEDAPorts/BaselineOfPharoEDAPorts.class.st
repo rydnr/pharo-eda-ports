@@ -17,22 +17,8 @@ Class {
 	#category : #BaselineOfPharoEDAPorts
 }
 
-{ #category : #baselines }
-BaselineOfPharoEDAPorts >> baseline: spec [
-
-	<baseline>
-	spec for: #common do: [ 
-		spec blessing: #baseline.
-		spec postLoadDoIt: #'postload:package:'.
-		self includePharoEDACommon: spec.
-		self includePharoEDAApi: spec.
-		self includePharoEDAErrors: spec.
-		self declarePackagesIn: spec.
-		self declareGroupsIn: spec ]
-]
-
 { #category : #meta }
-BaselineOfPharoEDAPorts >> declareGroupsIn: spec [
+BaselineOfPharoEDAPorts class >> declareGroupsIn: spec [
 
 	spec
 		group: 'core' with: #( 'EDAP-EventStore' 'EDAP-Messaging' );
@@ -41,7 +27,7 @@ BaselineOfPharoEDAPorts >> declareGroupsIn: spec [
 ]
 
 { #category : #meta }
-BaselineOfPharoEDAPorts >> declarePackagesIn: spec [
+BaselineOfPharoEDAPorts class >> declarePackagesIn: spec [
 
 	spec
 		package: #'EDAP-EventStore'
@@ -52,7 +38,7 @@ BaselineOfPharoEDAPorts >> declarePackagesIn: spec [
 ]
 
 { #category : #dependencies }
-BaselineOfPharoEDAPorts >> includePharoEDAApi: spec [
+BaselineOfPharoEDAPorts class >> includePharoEDAApi: spec [
 	spec
 		baseline: 'PharoEDAApi'
 		with: [ spec repository: 'github://rydnr/pharo-eda-api:main' ].
@@ -60,7 +46,7 @@ BaselineOfPharoEDAPorts >> includePharoEDAApi: spec [
 ]
 
 { #category : #dependencies }
-BaselineOfPharoEDAPorts >> includePharoEDACommon: spec [
+BaselineOfPharoEDAPorts class >> includePharoEDACommon: spec [
 	spec
 		baseline: 'PharoEDACommon'
 		with: [ spec repository: 'github://rydnr/pharo-eda-common:main' ].
@@ -68,11 +54,25 @@ BaselineOfPharoEDAPorts >> includePharoEDACommon: spec [
 ]
 
 { #category : #dependencies }
-BaselineOfPharoEDAPorts >> includePharoEDAErrors: spec [
+BaselineOfPharoEDAPorts class >> includePharoEDAErrors: spec [
 	spec
 		baseline: 'PharoEDAErrors'
 		with: [ spec repository: 'github://rydnr/pharo-eda-errors:main' ].
 	^ spec
+]
+
+{ #category : #baselines }
+BaselineOfPharoEDAPorts >> baseline: spec [
+
+	<baseline>
+	spec for: #common do: [ 
+		spec blessing: #baseline.
+		spec postLoadDoIt: #postload:package:.
+		self class includePharoEDACommon: spec;
+		 includePharoEDAApi: spec;
+		 includePharoEDAErrors: spec;
+		 declarePackagesIn: spec;
+		 declareGroupsIn: spec ]
 ]
 
 { #category : #hooks }
