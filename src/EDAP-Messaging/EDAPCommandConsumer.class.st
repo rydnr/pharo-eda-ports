@@ -7,42 +7,20 @@ Class {
 		'busListener',
 		'commandMaterializer',
 		'commandDispatcher',
-		'errorStrategy'
-	],
-	#classInstVars : [
-		'restartOnCommandConsumingErrors'
+		'settings'
 	],
 	#category : #'EDAP-Messaging-Command'
 }
 
 { #category : #'instance creation' }
-EDAPCommandConsumer class >> busListener: busListener commandMaterializer: commandMaterializer commandDispatcher: commandDispatcher [
-	^ self new
-		busListener: busListener;
-		commandMaterializer: commandMaterializer;
-		commandDispatcher: commandDispatcher;
-		yourself
-]
-
-{ #category : #'instance creation' }
-EDAPCommandConsumer class >> busListener: busListener commandMaterializer: commandMaterializer commandDispatcher: commandDispatcher andErrorStrategy: errorStrategy [
+EDAPCommandConsumer class >> busListener: busListener commandMaterializer: commandMaterializer commandDispatcher: commandDispatcher andSettings: settings [
 
 	^ self new
 		  busListener: busListener;
 		  commandMaterializer: commandMaterializer;
 		  commandDispatcher: commandDispatcher;
-		errorStrategy: errorStrategy;
+		  settings: settings;
 		  yourself
-]
-
-{ #category : #accessing }
-EDAPCommandConsumer class >> restartOnCommandConsumingErrors [
-	^ restartOnCommandConsumingErrors
-]
-
-{ #category : #accessing }
-EDAPCommandConsumer class >> restartOnCommandConsumingErrors: aBoolean [
-	restartOnCommandConsumingErrors := aBoolean
 ]
 
 { #category : #accessing }
@@ -99,13 +77,7 @@ EDAPCommandConsumer >> consumeMessage: aCommandMessageString usingStrategy: aStr
 { #category : #accessing }
 EDAPCommandConsumer >> errorStrategy [
 
-	^ errorStrategy ifNil: [ EDAECommandConsumingErrorBehavior strategy ]
-]
-
-{ #category : #accessing }
-EDAPCommandConsumer >> errorStrategy: anObject [
-
-	errorStrategy := anObject
+	^ self settings errorStrategy ifNil: [ EDAECommandConsumingErrorBehavior strategy ]
 ]
 
 { #category : #helpers }
@@ -130,22 +102,39 @@ EDAPCommandConsumer >> restart [
 		ensure: [ self start ]
 ]
 
+{ #category : #accessing }
+EDAPCommandConsumer >> restartOnErrors [
+
+	^ self settings restartOnErrors ifNil: [ true ]
+]
+
+{ #category : #accessing }
+EDAPCommandConsumer >> settings [
+
+	^ settings
+]
+
+{ #category : #accessing }
+EDAPCommandConsumer >> settings: anObject [
+
+	settings := anObject
+]
+
 { #category : #lifecycle }
 EDAPCommandConsumer >> start [
+
 	| listenerProcess |
 	self logWarningMessage: 'Starting Command Consumer...'.
 	self busListener resetClient.
 	listenerProcess := self busListener
-		subscribe;
-		onMessageDo: [ :message | self consumeMessage: message ].
+		                   subscribe;
+		                   onMessageDo: [ :message | 
+			                   self consumeMessage: message ].
 	listenerProcess
 		on: Exception - Break
 		do: [ :error | 
-			self
-				manageError: error
-				usingErrorStrategy: EDAECommandConsumingErrorBehavior strategy.
-			self class restartOnCommandConsumingErrors
-				ifTrue: [ self restart ] ].
+			self manageError: error usingErrorStrategy: self errorStrategy.
+			self restartOnErrors ifTrue: [ self restart ] ].
 	listenerProcess resume
 ]
 
