@@ -6,7 +6,8 @@ Class {
 	#instVars : [
 		'busListener',
 		'commandMaterializer',
-		'commandDispatcher'
+		'commandDispatcher',
+		'errorStrategy'
 	],
 	#classInstVars : [
 		'restartOnCommandConsumingErrors'
@@ -21,6 +22,17 @@ EDAPCommandConsumer class >> busListener: busListener commandMaterializer: comma
 		commandMaterializer: commandMaterializer;
 		commandDispatcher: commandDispatcher;
 		yourself
+]
+
+{ #category : #'instance creation' }
+EDAPCommandConsumer class >> busListener: busListener commandMaterializer: commandMaterializer commandDispatcher: commandDispatcher andErrorStrategy: errorStrategy [
+
+	^ self new
+		  busListener: busListener;
+		  commandMaterializer: commandMaterializer;
+		  commandDispatcher: commandDispatcher;
+		errorStrategy: errorStrategy;
+		  yourself
 ]
 
 { #category : #accessing }
@@ -70,7 +82,10 @@ EDAPCommandConsumer >> commandMaterializer: anObject [
 
 { #category : #reading }
 EDAPCommandConsumer >> consumeMessage: aCommandMessageString [
-	^ self consumeMessage: aCommandMessageString usingStrategy: EDAECommandConsumingErrorBehavior strategy
+
+	^ self
+		  consumeMessage: aCommandMessageString
+		  usingStrategy: self errorStrategy
 ]
 
 { #category : #reading }
@@ -79,6 +94,18 @@ EDAPCommandConsumer >> consumeMessage: aCommandMessageString usingStrategy: aStr
 	aCommand := self commandMaterializer
 		materialize: aCommandMessageString.
 	^ self commandDispatcher dispatch: aCommand usingStrategy: aStrategy
+]
+
+{ #category : #accessing }
+EDAPCommandConsumer >> errorStrategy [
+
+	^ errorStrategy ifNil: [ EDAECommandConsumingErrorBehavior strategy ]
+]
+
+{ #category : #accessing }
+EDAPCommandConsumer >> errorStrategy: anObject [
+
+	errorStrategy := anObject
 ]
 
 { #category : #helpers }
