@@ -7,19 +7,19 @@ Class {
 		'busListener',
 		'commandMaterializer',
 		'commandDispatcher',
-		'settings'
+		'edaApplication'
 	],
 	#category : #'EDAP-Messaging-Command'
 }
 
 { #category : #'instance creation' }
-EDAPCommandConsumer class >> busListener: busListener commandMaterializer: commandMaterializer commandDispatcher: commandDispatcher andSettings: settings [
+EDAPCommandConsumer class >> busListener: busListener commandMaterializer: commandMaterializer commandDispatcher: commandDispatcher forApp: anEDAApplication [
 
 	^ self new
 		  busListener: busListener;
 		  commandMaterializer: commandMaterializer;
 		  commandDispatcher: commandDispatcher;
-		  settings: settings;
+		  edaApplication: anEDAApplication;
 		  yourself
 ]
 
@@ -75,9 +75,21 @@ EDAPCommandConsumer >> consumeMessage: aCommandMessageString usingStrategy: aStr
 ]
 
 { #category : #accessing }
+EDAPCommandConsumer >> edaApplication [
+
+	^ edaApplication
+]
+
+{ #category : #accessing }
+EDAPCommandConsumer >> edaApplication: anObject [
+
+	edaApplication := anObject
+]
+
+{ #category : #accessing }
 EDAPCommandConsumer >> errorStrategy [
 
-	^ self settings errorStrategy ifNil: [ EDAECommandConsumingErrorBehavior strategy ]
+	^ self edaApplication commandListenerSettings errorStrategy ifNil: [ EDAECommandConsumingErrorBehavior strategy ]
 ]
 
 { #category : #helpers }
@@ -106,18 +118,6 @@ EDAPCommandConsumer >> restart [
 EDAPCommandConsumer >> restartOnErrors [
 
 	^ self settings restartOnErrors ifNil: [ true ]
-]
-
-{ #category : #accessing }
-EDAPCommandConsumer >> settings [
-
-	^ settings
-]
-
-{ #category : #accessing }
-EDAPCommandConsumer >> settings: anObject [
-
-	settings := anObject
 ]
 
 { #category : #lifecycle }
