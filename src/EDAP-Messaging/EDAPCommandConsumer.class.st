@@ -89,7 +89,7 @@ EDAPCommandConsumer >> edaApplication: anObject [
 { #category : #accessing }
 EDAPCommandConsumer >> errorStrategy [
 
-	^ self edaApplication commandListenerSettings errorStrategy ifNil: [ EDAECommandConsumingErrorBehavior strategy ]
+	^ self edaApplication portSettings commandListenerSettings errorStrategy ifNil: [ EDAECommandConsumingErrorBehavior strategy ]
 ]
 
 { #category : #helpers }
