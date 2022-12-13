@@ -117,7 +117,7 @@ EDAPCommandConsumer >> restart [
 { #category : #accessing }
 EDAPCommandConsumer >> restartOnErrors [
 
-	^ self settings restartOnErrors ifNil: [ true ]
+	^ self edaApplication portSettings commandListenerSettings restartOnErrors ifNil: [ true ]
 ]
 
 { #category : #lifecycle }
