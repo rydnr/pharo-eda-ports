@@ -3,12 +3,27 @@ Class {
 	#superclass : #Object,
 	#traits : 'EDACPrintOnHelper',
 	#classTraits : 'EDACPrintOnHelper classTrait',
+	#instVars : [
+		'config'
+	],
 	#category : #'EDAP-Messaging-Topic'
 }
 
 { #category : #lifecycle }
 EDAPTopicPublisher >> close [
 	self client close
+]
+
+{ #category : #accessing }
+EDAPTopicPublisher >> config [
+
+	^ config
+]
+
+{ #category : #accessing }
+EDAPTopicPublisher >> config: anObject [
+
+	config := anObject
 ]
 
 { #category : #writing }
