@@ -1,0 +1,161 @@
+{
+  "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1652776076,
+        "narHash": "sha256-gzTw/v1vj4dOVbpBSJX4J0DwUR6LIyXo7/SuuTJp1kM=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "04c1b180862888302ddfb2e3ad9eaa63afc60cf8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "ref": "v1.0.0",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1745124554,
+        "narHash": "sha256-IlzzbKV0bRCAJ9AwmIcLHARfCPbktdzdzjfPvtpJXpI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "42200c47299544ed0615b66d46322a41308d7390",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "release-24.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pharo-eda-api-12": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pharo-eda-common-12": [
+          "pharo-eda-common-12"
+        ],
+        "pharo-vm-12": [
+          "pharo-vm-12"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745138540,
+        "narHash": "sha256-lQhHpr/CDMc5s2dMFnJ6fOk9kABihMYlc1qpmHv+JXE=",
+        "owner": "rydnr",
+        "repo": "pharo-eda-api",
+        "rev": "f2713c17b72af36615ee4119c788ecb5a4c34f72",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rydnr",
+        "ref": "0.1.0",
+        "repo": "pharo-eda-api",
+        "type": "github"
+      }
+    },
+    "pharo-eda-common-12": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pharo-vm-12": [
+          "pharo-vm-12"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745130181,
+        "narHash": "sha256-tnbST9lp3qHpJbvTk9s/P062JifOTyyHCLVnyEemsZM=",
+        "owner": "rydnr",
+        "repo": "pharo-eda-common",
+        "rev": "89a36ae4489762ba407de645ad48360d279fee61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rydnr",
+        "ref": "0.1.1",
+        "repo": "pharo-eda-common",
+        "type": "github"
+      }
+    },
+    "pharo-eda-errors-12": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pharo-eda-common-12": [
+          "pharo-eda-common-12"
+        ],
+        "pharo-vm-12": [
+          "pharo-vm-12"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745139856,
+        "narHash": "sha256-3cWXGxZaor/+YW1ywaJIvL5TlERN/mLsLT9+0K+gz2E=",
+        "owner": "rydnr",
+        "repo": "pharo-eda-errors",
+        "rev": "989d8e7e069537daa5eb8556299f35edaad613c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rydnr",
+        "ref": "0.1.0",
+        "repo": "pharo-eda-errors",
+        "type": "github"
+      }
+    },
+    "pharo-vm-12": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "pharo-vm",
+        "lastModified": 1745082791,
+        "narHash": "sha256-Ik2AW/vJfuc8+KQwcLQfO1Heimhvc2JOzKsIki2omuQ=",
+        "owner": "rydnr",
+        "repo": "nix-flakes",
+        "rev": "9428ffc0c2241a7b9b8129ba3d369d7e2ef0ec6d",
+        "type": "github"
+      },
+      "original": {
+        "dir": "pharo-vm",
+        "owner": "rydnr",
+        "ref": "pharo-vm-12.0.1519.4",
+        "repo": "nix-flakes",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "pharo-eda-api-12": "pharo-eda-api-12",
+        "pharo-eda-common-12": "pharo-eda-common-12",
+        "pharo-eda-errors-12": "pharo-eda-errors-12",
+        "pharo-vm-12": "pharo-vm-12"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
