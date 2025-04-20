@@ -32,94 +32,17 @@
         "type": "github"
       }
     },
-    "pharo-eda-api-12": {
+    "root": {
       "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "pharo-eda-common-12": [
-          "pharo-eda-common-12"
-        ],
-        "pharo-vm-12": [
-          "pharo-vm-12"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745138540,
-        "narHash": "sha256-lQhHpr/CDMc5s2dMFnJ6fOk9kABihMYlc1qpmHv+JXE=",
-        "owner": "rydnr",
-        "repo": "pharo-eda-api",
-        "rev": "f2713c17b72af36615ee4119c788ecb5a4c34f72",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rydnr",
-        "ref": "0.1.0",
-        "repo": "pharo-eda-api",
-        "type": "github"
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs",
+        "rydnr-nix-flakes-pharo-vm": "rydnr-nix-flakes-pharo-vm",
+        "rydnr-pharo-eda-api": "rydnr-pharo-eda-api",
+        "rydnr-pharo-eda-common": "rydnr-pharo-eda-common",
+        "rydnr-pharo-eda-errors": "rydnr-pharo-eda-errors"
       }
     },
-    "pharo-eda-common-12": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "pharo-vm-12": [
-          "pharo-vm-12"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745130181,
-        "narHash": "sha256-tnbST9lp3qHpJbvTk9s/P062JifOTyyHCLVnyEemsZM=",
-        "owner": "rydnr",
-        "repo": "pharo-eda-common",
-        "rev": "89a36ae4489762ba407de645ad48360d279fee61",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rydnr",
-        "ref": "0.1.1",
-        "repo": "pharo-eda-common",
-        "type": "github"
-      }
-    },
-    "pharo-eda-errors-12": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "pharo-eda-common-12": [
-          "pharo-eda-common-12"
-        ],
-        "pharo-vm-12": [
-          "pharo-vm-12"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745139856,
-        "narHash": "sha256-3cWXGxZaor/+YW1ywaJIvL5TlERN/mLsLT9+0K+gz2E=",
-        "owner": "rydnr",
-        "repo": "pharo-eda-errors",
-        "rev": "989d8e7e069537daa5eb8556299f35edaad613c1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rydnr",
-        "ref": "0.1.0",
-        "repo": "pharo-eda-errors",
-        "type": "github"
-      }
-    },
-    "pharo-vm-12": {
+    "rydnr-nix-flakes-pharo-vm": {
       "inputs": {
         "flake-utils": [
           "flake-utils"
@@ -145,14 +68,91 @@
         "type": "github"
       }
     },
-    "root": {
+    "rydnr-pharo-eda-api": {
       "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs",
-        "pharo-eda-api-12": "pharo-eda-api-12",
-        "pharo-eda-common-12": "pharo-eda-common-12",
-        "pharo-eda-errors-12": "pharo-eda-errors-12",
-        "pharo-vm-12": "pharo-vm-12"
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rydnr-nix-flakes-pharo-vm": [
+          "rydnr-nix-flakes-pharo-vm"
+        ],
+        "rydnr-pharo-eda-common": [
+          "rydnr-pharo-eda-common"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745142097,
+        "narHash": "sha256-vZOEioDX7OIKee8l2GThZu+oWMKsqVSrkK9CArkHQpc=",
+        "owner": "rydnr",
+        "repo": "pharo-eda-api",
+        "rev": "ebc5d2bbb29106130eb021284c4e6e5f8a572c05",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rydnr",
+        "ref": "0.1.1",
+        "repo": "pharo-eda-api",
+        "type": "github"
+      }
+    },
+    "rydnr-pharo-eda-common": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rydnr-nix-flakes-pharo-vm": [
+          "rydnr-nix-flakes-pharo-vm"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745141924,
+        "narHash": "sha256-1ON4+/sFWsy2pPWwJ1htPTeRWzAbEV35bikWFBVgvXs=",
+        "owner": "rydnr",
+        "repo": "pharo-eda-common",
+        "rev": "5336c91d1c394eadecbca2b6fe67a312b44d1ad9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rydnr",
+        "ref": "0.1.2",
+        "repo": "pharo-eda-common",
+        "type": "github"
+      }
+    },
+    "rydnr-pharo-eda-errors": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rydnr-nix-flakes-pharo-vm": [
+          "rydnr-nix-flakes-pharo-vm"
+        ],
+        "rydnr-pharo-eda-common": [
+          "rydnr-pharo-eda-common"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745142261,
+        "narHash": "sha256-DToEkWSsNdbVJjCvugzwS7HoE77mLF9CPOVCNqNYp3Q=",
+        "owner": "rydnr",
+        "repo": "pharo-eda-errors",
+        "rev": "9702829d30ef1d0d66149e8280e49674b046206b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rydnr",
+        "ref": "0.1.1",
+        "repo": "pharo-eda-errors",
+        "type": "github"
       }
     }
   },

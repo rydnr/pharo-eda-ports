@@ -4,30 +4,30 @@
   inputs = rec {
     flake-utils.url = "github:numtide/flake-utils/v1.0.0";
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
-    pharo-vm-12 = {
+    rydnr-nix-flakes-pharo-vm = {
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:rydnr/nix-flakes/pharo-vm-12.0.1519.4?dir=pharo-vm";
     };
-    pharo-eda-api-12 = {
+    rydnr-pharo-eda-api = {
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.pharo-eda-common-12.follows = "pharo-eda-common-12";
-      inputs.pharo-vm-12.follows = "pharo-vm-12";
-      url = "github:rydnr/pharo-eda-api/0.1.0";
+      inputs.rydnr-pharo-eda-common.follows = "rydnr-pharo-eda-common";
+      inputs.rydnr-nix-flakes-pharo-vm.follows = "rydnr-nix-flakes-pharo-vm";
+      url = "github:rydnr/pharo-eda-api/0.1.1";
     };
-    pharo-eda-common-12 = {
+    rydnr-pharo-eda-common = {
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.pharo-vm-12.follows = "pharo-vm-12";
-      url = "github:rydnr/pharo-eda-common/0.1.1";
+      inputs.rydnr-nix-flakes-pharo-vm.follows = "rydnr-nix-flakes-pharo-vm";
+      url = "github:rydnr/pharo-eda-common/0.1.2";
     };
-    pharo-eda-errors-12 = {
+    rydnr-pharo-eda-errors = {
       inputs.flake-utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.pharo-eda-common-12.follows = "pharo-eda-common-12";
-      inputs.pharo-vm-12.follows = "pharo-vm-12";
-      url = "github:rydnr/pharo-eda-errors/0.1.0";
+      inputs.rydnr-pharo-eda-common.follows = "rydnr-pharo-eda-common";
+      inputs.rydnr-nix-flakes-pharo-vm.follows = "rydnr-nix-flakes-pharo-vm";
+      url = "github:rydnr/pharo-eda-errors/0.1.1";
     };
   };
   outputs = inputs:
@@ -37,7 +37,7 @@
         org = "rydnr";
         repo = "pharo-eda-ports";
         pname = "${repo}";
-        tag = "0.1.0";
+        tag = "0.1.1";
         baseline = "PharoEDAPorts";
         pkgs = import nixpkgs { inherit system; };
         description = "Discovers adapters and injects them into ports";
@@ -140,13 +140,13 @@
         packages = rec {
           default = pharo-eda-ports-12;
           pharo-eda-ports-12 = pharo-eda-ports-for rec {
-            bootstrap-image-url = pharo-vm-12.resources.${system}.bootstrap-image-url;
-            bootstrap-image-sha256 = pharo-vm-12.resources.${system}.bootstrap-image-sha256;
-            bootstrap-image-name = pharo-vm-12.resources.${system}.bootstrap-image-name;
-            pharo-vm = pharo-vm-12.packages.${system}.pharo-vm;
-            pharo-eda-api = pharo-eda-api-12.packages.${system}.pharo-eda-api-12;
-            pharo-eda-common = pharo-eda-common-12.packages.${system}.pharo-eda-common-12;
-            pharo-eda-errors = pharo-eda-errors-12.packages.${system}.pharo-eda-errors-12;
+            bootstrap-image-url = rydnr-nix-flakes-pharo-vm.resources.${system}.bootstrap-image-url;
+            bootstrap-image-sha256 = rydnr-nix-flakes-pharo-vm.resources.${system}.bootstrap-image-sha256;
+            bootstrap-image-name = rydnr-nix-flakes-pharo-vm.resources.${system}.bootstrap-image-name;
+            pharo-vm = rydnr-nix-flakes-pharo-vm.packages.${system}.pharo-vm;
+            pharo-eda-api = rydnr-pharo-eda-api.packages.${system}.pharo-eda-api-12;
+            pharo-eda-common = rydnr-pharo-eda-common.packages.${system}.pharo-eda-common-12;
+            pharo-eda-errors = rydnr-pharo-eda-errors.packages.${system}.pharo-eda-errors-12;
           };
         };
       });
